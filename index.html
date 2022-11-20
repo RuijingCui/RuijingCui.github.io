@@ -183,7 +183,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/11/19/MyFirstBlog/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2022/11/19/MyFirstBlog/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -200,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-20 17:36:39" itemprop="dateModified" datetime="2022-11-20T17:36:39+08:00">2022-11-20</time>
+                <time title="修改时间：2022-11-20 23:36:53" itemprop="dateModified" datetime="2022-11-20T23:36:53+08:00">2022-11-20</time>
               </span>
 
           
@@ -214,19 +214,259 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+          <p><strong>Causal Inference</strong></p>
+<h1 id="1-Causal-Inference-全部基本知识"><a href="#1-Causal-Inference-全部基本知识" class="headerlink" title="1.   Causal Inference 全部基本知识"></a>1.   Causal Inference 全部基本知识</h1><h2 id="Causal-Inference-目标、假设、框架"><a href="#Causal-Inference-目标、假设、框架" class="headerlink" title="Causal Inference 目标、假设、框架"></a>Causal Inference 目标、假设、框架</h2><h3 id="什么是因果推断"><a href="#什么是因果推断" class="headerlink" title="什么是因果推断"></a>什么是因果推断</h3><p>inferring effect of X on Y。预测一个试验 X 对结果的改变 Y 效应。</p>
+<p>推测某个试验(treatment)针对某个结果(outcome)的效应(effect)。</p>
+<h3 id="为什么需要因果推断-Simpson’s-paradox"><a href="#为什么需要因果推断-Simpson’s-paradox" class="headerlink" title="为什么需要因果推断 Simpson’s paradox"></a>为什么需要因果推断 Simpson’s paradox</h3><p>两个原因：Simpson’s paradox，相关性不一定等于因果性</p>
+<p>（1）Simpson’s paradox及原因</p>
+<p>​                               </p>
+<p>男性群体中：用药的恢复率高于不用药 新药效果好</p>
+<p>女性群体中：用药的恢复率高于不用药  新药效果好</p>
+<p>但是总群体：用药的恢复率低于不用药  新药效果不好</p>
+<p><strong>这种现象称之为辛普森悖论****Simpson’s paradox</strong>。</p>
+<p>原因分析：Simpson’s parado    x大部分来源于这种不相等的权重：</p>
+<p>在用药群体中：87&#x2F;350&#x3D;0.25权重考虑男性，263&#x2F;350&#x3D;<strong>0.75****权重考虑女性</strong></p>
+<p>在不用药群体中：270&#x2F;350&#x3D;<strong>0.77****权重考虑男性</strong>，80&#x2F;350&#x3D;0.23权重考虑女性</p>
+<p>（2）因果性(边际)不等于相关性（条件）：</p>
+<p>相关性中包含causal association与confounding association，<strong>在随机实验中等号成立</strong>。</p>
+<h3 id="因果推断的三个层次两个框架"><a href="#因果推断的三个层次两个框架" class="headerlink" title="因果推断的三个层次两个框架"></a>因果推断的三个层次两个框架</h3><p>从现实数据中提取出某些变量间的因果关系，主要就是Judea Pearl的因果信息革命。其中也囊括了目前最火热的机器学习方法。他提出的因果关系之梯，根据因果问题的可答性，对比了目前的机器学习(深度学习)和因果推断区别。</p>
+<p>Judea Pearl书《what if》<strong>因果推断的三个层次</strong>：</p>
+<p>把任务分为递进的3类，association（what is）-&gt; intervention（what if）-&gt; counterfactuals（retrospection）。</p>
+<p>第一层：传统机器学习（关联层）是在问你what is?，即给定属性，问你是什么的概率；</p>
+<p>第二层（干预层）是在问what if？即，如果我对你做了什么，你会怎么样？</p>
+<p>第三层：终极（反事实层）的当然是回答哲学反事实问题，如果我当时那样做了，会怎么样？这里层层递进，高层可以回答低层的问题，反之则不行，因为不具备充足的信息。</p>
+<p><strong>因果推断的两个框架：</strong></p>
+<p>「潜在结果框架」（potential outcome framework）以及「结构因果模型」（structual causal model），前者也被称为「鲁宾因果模型」（Rubin causal model，RCM）。潜在结果框架的主要目标是估计不同干预下的潜在结果（包括反事实结果），以估计实际的干预效果。而结构方程模型则是通过构建因果图与结构方程来探究因果关系。</p>
+<p>Structural Causal Models(SCM) – Judea Pearl: A causal model by SCMs consists of two components: the causal graph (causal diagram) and the structural equations. 即我们需要先得到一张因果图，然后对于因果图，我们去使用Structural Equations来描述它。</p>
+<p>Potential Outcome Framework– Donald Rubin: It is mainly applied to learning causal effect as it corresponds to a given treatment-outcome pair (D,Y).</p>
+<h3 id="Fundamental-Problem-of-causal-inference"><a href="#Fundamental-Problem-of-causal-inference" class="headerlink" title="Fundamental Problem of causal inference"></a>Fundamental Problem of causal inference</h3><p>潜在结果Potential outcomes: <em>do</em>(T&#x3D;1)为施加treatment，<em>do</em>(T&#x3D;0)为不施加，<strong>潜在结果</strong>的集合记为：</p>
+<p>  则个体因果效应ITE (Individual treatment effect):</p>
+<p><em>ITEi</em>&#x3D; </p>
+<p>公式化表达：</p>
+<p>但是，一个个体，对其施加treatment（比如吃药），则无法观察到不施加treatment的结果。只能得到potential outcomes中一个结果，另一个称为反事实(Counterfactual)。因为无法观测到counterfactual，所以无法计算ITE。</p>
+<p>因此，希望能计算针对人群的平均效应ATE (Average treatment effect)</p>
+<p>在随机试验中可以用条件期望计算因果效应：</p>
+<p><strong>随机试验是计算因果效应的一种完美的方法</strong>。虽然随机试验是计算因果效应的理想方案，但在现实世界中，随机试验可能由于种种原因（Ethical reasons伦理，Infeasibility不可行，Impossibility不可能）是无法进行的，所以需要进行观测研究（Observational studies）。在观测性研究中，通常收集到如下数据：个体的属性变量X（如年龄、性别、病史等）、个体是否接受处理T（是否吃药&#x2F;参加培训，等），个体的结果变量Y（生活质量、用药康复等）。观测数据中由于confounder的存在，不能直接利用E(Y|T&#x3D;1)-E(Y|T&#x3D;0)来度量处理因果作用。</p>
+<p>Observational studies：因果推断的观测研究的直接问题就是存在confounders C，需要对其进行处理分析，进而进行因果推断。</p>
+<p>Solutions: adjust&#x2F;control for confounders：</p>
+<p>当confounder是sufficient adjustment set时，根据上式可以发现，基于confounder作为条件时，计算等式最终是不包含因果变量的（统计量E[Y|t,c]），方便计算因果效应。能这样做的原因是基于confounder作为条件时，阻断了C-&gt;Y的因果路径。(相当于取某个C值时，组里C都是一样，结果差异不由confounder导致）由于计算结果是基于confounder C的条件的，还需要margin out C来计算T的因果效应：</p>
+<p>例子：用药对降低死亡率的影响，病情的严重程度是confounder：</p>
+<p>Simpson’s Paradox存在就是因为计算过程中Treatment和Control组中不同的严重程度（confounder）分配权重是不同的，所以导致两个组内confounder因素存在差异，导致不可比。</p>
+<h3 id="偏差-bias-与混淆-confounding"><a href="#偏差-bias-与混淆-confounding" class="headerlink" title="偏差(bias)与混淆(confounding)"></a>偏差(bias)与混淆(confounding)</h3><p><strong>bias****：</strong></p>
+<p>一般由系统误差造成，导致因变量与自变量之间的相关估计不准确。特点</p>
+<p>l 试验方法带来的系统误差</p>
+<p>l 影响一般导致估计偏高或者偏低，取决于系统误差的方向</p>
+<p>l 具体的数量级在分析阶段很难估计，且难以修正。所以一般要在试验设计时仔细考虑并在试验过程中尽量控制试验过程中可能引入的偏差</p>
+<p>一般分为两类：information bias &amp; selection bias</p>
+<p>information bias</p>
+<p>selection bias</p>
+<p>sampling bias：研究对象中，更倾向于选择某些特性的人，无法代表大众。（比如医疗志愿者则相对大众更加注重健康）</p>
+<p>allocation bias：试验组和对照组出现分配偏差，就是不随机。</p>
+<p>loss to follow-up：试验中流失的人于未流失的人存在差异导致。</p>
+<p>selection bias in case-control studies。case-control study：一种研究变量间关系的试验方法。简单说就是根据产生目标的结果选择treatment组（比如肺癌患者），然后再选择没有结果的人（未得肺癌）作为control组，然后比较他们的一些解释变量（自变量）方法。(一种回溯(retrospection)的方法）。选择的control组不能代表产生结果的人群时，产生selection bias。（比如研究某个疾病，则只从医院选择人群，但是医院的人可能本身存在很多其他问题，也与自变量相关，就会低估它于目标变量间的关系）；可以通过选择多个不同渠道的用户作为control（比如病房+小区）。</p>
+<p>selection bias in cohort studies。cohort studies：也是一种研究变量间关系的试验方法。选择一群人在一段时间具有相似的特征，然后观测他们时候会发生某些结果。相对case-control，它可以是回溯过去 (retrospective) 也可以是预期未来(prospective)，且可以不需要对照组。</p>
+<p>selection bias in random trials。随机试验一般不存在selection bias，因为人群被随机分配到不同组，且分配过程中都会尽量保证随机性。但是当人员存在拒绝参加，或者提前退出也会影响结果。</p>
+<p><strong>Confounding****：</strong></p>
+<p>混淆变量&#x2F;混杂因子学术论文中一般表达为confounder。Confounder的存在容易产生伪效应（spurious effect）</p>
+<p>定义：同时影响X和Y的变量。既要影响X也要影响Y。常常出现confounding是由于某些变量因素在实验对照组分布不均。</p>
+<p>confounding可能产生的影响（不控制情况）：</p>
+<p>观测到相关，但实际不相关；</p>
+<p>观测到不相关，但是实际相关；</p>
+<p>低估相关性 (negative confounding)；</p>
+<p>高估相关性 (positive confounding)。</p>
+<p><strong>实验阶段控制<strong><strong>confounding</strong></strong>的方法</strong></p>
+<p>①Randomization：控制confounding的理想方法，所有潜在confounder(已知和未知)在实验组平均分配，实验成本较高，由于伦理原因，难以考虑具有危害性因素（比如随机让人吸烟）。</p>
+<p>②Restriction：限制具有与confounding因素相似特征的人群。比如仅研究非吸烟者，则应该消除可能存在吸烟作为confounding的人群，缺点是如果研究组是同质的，则很难推广实验结果到更广泛的人群。</p>
+<p>③Matching：比如case-control实验中，针对实验组选择对照组时，尽量选择使潜在confounder分布与实验组相似，一般有2种方式：pair-matching：对每一个实验人选择状态相似的对照人群；frequency matching：对实验人群选择相似特征的人群。</p>
+<p><strong>分析阶段检测和控制****confounding</strong></p>
+<h3 id="因果推断的假设"><a href="#因果推断的假设" class="headerlink" title="因果推断的假设"></a>因果推断的假设</h3><p>RCM框架下的研究大都基于这些假设展开，论文中大都会提及自己使用的假设。因果推断目标之一是计算average treatment effect (ATE)，研究T对Y的因果效应。</p>
+<p>Y(t)是 potential outcome的简写，是一个causal quantity，无法直接计算（获取的数据都是计算statistical quantities的）。随机试验RCTs对于因果推断是神圣的，但是一般很多原因(比如伦理原因、可行性、资源利用等）导致获取数据并非是随机的 (w.r.t T)。在这情况下，<strong>如果<strong><strong>X</strong></strong>完全描述了数据分配的关系**</strong>(sufficient adjustment sets)<strong><strong>，那还是可以一致且无偏估计</strong></strong>ATE (consistent &amp; unbiased)<strong><strong>，这里涉及一些研究时的假设（目的是</strong></strong>: Identifiability)**</p>
+<h4 id="（1）条件可忽略性-x2F-可交换假设Unconfoundedness-conditional-ignorability-x2F-conditional-exchangeability-："><a href="#（1）条件可忽略性-x2F-可交换假设Unconfoundedness-conditional-ignorability-x2F-conditional-exchangeability-：" class="headerlink" title="（1）条件可忽略性&#x2F;可交换假设Unconfoundedness (conditional ignorability &#x2F; conditional exchangeability)："></a>（1）条件可忽略性&#x2F;可交换假设Unconfoundedness (conditional ignorability &#x2F; conditional exchangeability)：</h4><p>   *<em>说明给定</em><em><strong>X</strong></em><em>时，</em><em>*<em>potential outcome Y(t)<strong><strong>与</strong></strong>T</em>*</em>*无关**，这步对于ATE非常关键，是上面公示第二行等号成立的条件。</p>
+<p>   conditional exchangeability 为说明了*<em>Y(1)<strong><strong>不论在</strong></strong>treatment</em><em><strong>组还是</strong></em><em>control</em><em><strong>组期望是不变的</strong>，也说明了</em><em>Y(t)<strong><strong>与</strong></strong>T</em>*<strong>无关</strong>。</p>
+<p>这个条件是无法测试的..</p>
+<p>在该假设下，此时𝐴𝐶𝐸 可以识别，因为</p>
+<p>𝐴𝐶𝐸 &#x3D; 𝐸(𝑌 (1)) − 𝐸(𝑌 (0))</p>
+<p>&#x3D; 𝐸[𝐸(𝑌(1)∣𝑋)] − 𝐸[𝐸(𝑌 (0)∣𝑋)]</p>
+<p>&#x3D; 𝐸[𝐸(𝑌(1)∣𝑋, <em>T</em> &#x3D; 1)] − 𝐸[𝐸(𝑌 (0)∣𝑋, <em>T</em> &#x3D; 0)]</p>
+<p>&#x3D; 𝐸[𝐸(𝑌∣𝑋,<em>T</em> &#x3D; 1)] − 𝐸[𝐸(𝑌∣𝑋,<em>T</em> &#x3D; 0)].</p>
+<p>可知估计𝐴𝐶𝐸的关键在于两个条件矩𝐸[𝐸(𝑌∣𝑋, <em>T</em> &#x3D; 1)] 和𝐸[𝐸(𝑌∣𝑋, <em>T</em> &#x3D; 0)].</p>
+<p>该条假设认为：所有的混淆变量都已知，将已知混淆变量合理处理后T和Y的关系就是因果关系。这一条也被认为是最严格的假设，因为实际情况下很难说已经完全排除了混淆变量的影响。所以有论文研究潜在变量</p>
+<h4 id="（2）Positivity假设"><a href="#（2）Positivity假设" class="headerlink" title="（2）Positivity假设"></a>（2）Positivity假设</h4><p>非常关键的一个假设！intuition为如果边界达成，则某个x下，要么全是treatment要么全是control，则无法计算真实ATE，此时causal effect是ill-defined（<strong>且在部分概率推到中导致除****0</strong>），根据贝叶斯公式，这条假设也叫<strong>Overlap</strong> between P(X|T&#x3D;1) &amp; P(X|T&#x3D;0)。如果某些变量违背此假设，叫<strong>positivity violation</strong>，某些情况下可以extrapolate（外推）。不太懂什么是外推</p>
+<h4 id="（3）强可忽略性假设"><a href="#（3）强可忽略性假设" class="headerlink" title="（3）强可忽略性假设"></a>（3）强可忽略性假设</h4><p>把Unconfoundedness假设和Positivity合并得到强可忽略性假设：</p>
+<h4 id="（4）No-interference"><a href="#（4）No-interference" class="headerlink" title="（4）No interference"></a>（4）No interference</h4><p>或表达为：作用在样本i上的treatment产生的effect和在样本j上的treatment无关：</p>
+<p>此假设一般默认成立，是说我的结果与他人无关，<strong>个体之间相互独立。</strong></p>
+<h4 id="（5）Consistency一致性假设"><a href="#（5）Consistency一致性假设" class="headerlink" title="（5）Consistency一致性假设"></a>（5）Consistency一致性假设</h4><p>此假设一般默认成立，是说T对结果是一致的，<strong>一种<strong><strong>T</strong></strong>不能导致多种结果</strong>。简单举个例子，T为是否养猫，Y为是否开心，不希望养了一只加菲T&#x3D;1, 结果Y&#x3D;1；养了一只美短T&#x3D;1, 结果Y&#x3D;0。说明T定义不好，这常在设计实验时容易出错。也叫<strong>No multiple version of Treatment****。</strong></p>
+<p>该假设在论文[Estimating individual treatment effect: generalization bounds and algorithms](【ITEs、winner on IDHP】Estimating individual treatment effect generalization bounds and algorithms&#x2F;Estimating individual treatment effect generalization bounds and algorithms.pdf)中的表述为：if t &#x3D; 0 we observe y &#x3D; Y0, if t &#x3D; 1, we observe y &#x3D; Y1.</p>
+<h3 id="Causal-Inference整体框架：大致分为2步"><a href="#Causal-Inference整体框架：大致分为2步" class="headerlink" title="Causal Inference整体框架：大致分为2步"></a>Causal Inference整体框架：大致分为2步</h3><h4 id="术语约定："><a href="#术语约定：" class="headerlink" title="术语约定："></a>术语约定：</h4><p>Estimand: 感兴趣的量，比如期望，ATE</p>
+<p>Estimate: 利用数据估计的值</p>
+<p>Estimation：Estimand到Estimate过程</p>
+<h4 id="Two-steps"><a href="#Two-steps" class="headerlink" title="Two steps"></a>Two steps</h4><p><strong>第一步：<strong><strong>Identification</strong></strong>：</strong>感兴趣的是Causal Estimand (如ATE)，但是没法直接计算（因为只能计算统计量），需要转化为statistical Estimand (统计量)，这个过程叫Identification。</p>
+<p><strong>第二步：<strong><strong>Estimation</strong></strong>：</strong>根据statistical Estimand，利用data进行估计的数值，这个过程叫Estimation。</p>
+<p>总体框架</p>
+<h3 id="领域经典书目："><a href="#领域经典书目：" class="headerlink" title="领域经典书目："></a>领域经典书目：</h3><p>l <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/huYW_5IZVUBRkGwr_EHdwg">40本书目列表</a></p>
+<p>l <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzI2MTE4NzU5OQ==&scene=1&album_id=1406705666328313858&count=3#wechat_redirect">因果关系推断研究62本电子书列表</a></p>
+<p>l <a target="_blank" rel="noopener" href="http://bayes.cs.ucla.edu/WHY/">Judea Pearl基础书籍下载网址</a></p>
+<h2 id="Causal-Model-基础概率图、因果图知识"><a href="#Causal-Model-基础概率图、因果图知识" class="headerlink" title="Causal Model 基础概率图、因果图知识"></a>Causal Model 基础概率图、因果图知识</h2><p>Causal model一般为graph model (directed graph)<strong>，有向无环图****DAG</strong>。整个模型思路就是，基于概率图基础上再增加一些causal假设，可以进行causal的操作。</p>
+<p>Bayesian Network Factorization (Markov Assumption)：</p>
+<p>主要对图赋予了independent关系(parent-children)，进而简化概率分布；Minimality&#x2F;Causal-Edges Assumption：连接节点具有相关性。相关性不一定导致因果性，就是因为在研究过程中，不同的假设，对graph(DAG)赋予了概率性(independent &amp; dependent)和因果性(dependent)，<strong>通常的观测数据中既包含<strong><strong>causal association</strong></strong>也包含</strong> <strong>non-causal association</strong></p>
+<h3 id="DAG中的三种基本结构、d-seperation"><a href="#DAG中的三种基本结构、d-seperation" class="headerlink" title="DAG中的三种基本结构、d-seperation"></a>DAG中的三种基本结构、d-seperation</h3><p>from：[Causal Inference in Statistics A Primer 因果推断的四章节书.pdf](【第一本】Causal Inference in Statistics A Primer 因果推断的四章节书.pdf)</p>
+<p>常用术语：在graph中，<strong>阻断了<strong><strong>association</strong></strong>称为****block</strong> <strong>the path</strong>，否则unblock the path。在概率中block主要手段就是conditioning，conditioning strategy连接并总结了matching和regression方法。</p>
+<h4 id="（1）Chains"><a href="#（1）Chains" class="headerlink" title="（1）Chains"></a>（1）Chains</h4><p>​     </p>
+<p><strong>Chains</strong>：链状结构  及例子</p>
+<p>结论：</p>
+<p>没有condition在Y上时，association从X流向Z；Condition在Y上时，路径将被block，此时X和Z独立。</p>
+<p><strong>Rule 1 (Conditional Independence in Chains)</strong> Two variables, X and Z, are conditionally independent given Y, if there is only one unidirectional path between X and Z and Y is any set of variables that intercepts that path.</p>
+<h4 id="（2）Forks"><a href="#（2）Forks" class="headerlink" title="（2）Forks"></a>（2）Forks</h4><p><strong>Forks</strong>：叉状结构  及例子</p>
+<p>结论：</p>
+<p>Condition在X上，路径将被block，此时Y和Z独立。</p>
+<p><strong>Rule 2 (Conditional Independence in Forks)</strong> If a variable X is a common cause of variables Y and Z, and there is only one path between Y and Z, then Y and Z are independent conditional on X.</p>
+<h4 id="（3）Colliders"><a href="#（3）Colliders" class="headerlink" title="（3）Colliders"></a>（3）Colliders</h4><p><strong>Colliders</strong>：对撞结构</p>
+<p>结论：</p>
+<p>Condition在Z上，路径将被unblock，此时X和Y相关。</p>
+<p><strong>Rule 3 (Conditional Independence in Colliders)</strong> If a variable Z is the collision node between two variables X and Y, and there is only one path between X and Y, then X and Y are <strong>unconditionally independent</strong> but are dependent conditional on Z and <strong>any descendants of Z</strong>.</p>
+<h4 id="d-seperation"><a href="#d-seperation" class="headerlink" title="d-seperation"></a>d-seperation</h4><p>基于上述三种DAG中的三种基本结构，d-seperation (X and Y are d-seperated by Z)，是说condition on Z，block X到Y的全部path。</p>
+<p>如果连接两个变量（或变量集合）的所有路均被关闭，则称为两个变量（两个变量集合）被有向分隔（D-separation），否则被有向连接（D-connectedness）。有向分隔包括右图的三种情形：</p>
+<p> 1）路中含碰撞节点（E → M1 ← D）;</p>
+<p> 2）对因果路的中介变量施加条件（ E → [M2] → D ）;</p>
+<p> 3）对混杂路上的混杂因子施加条件（ E ← [M3] → D ）。</p>
+<h3 id="因果图"><a href="#因果图" class="headerlink" title="因果图"></a>因果图</h3><p>因果模型相对于传统统计模型，最大的区别在于研究<strong>干预</strong>**(intervention)<strong><strong>和反事实</strong></strong>(conterfactual)**。</p>
+<h4 id="do-operator"><a href="#do-operator" class="headerlink" title="do-operator"></a><em>do</em>-operator</h4><p>（1）含义概念：</p>
+<p>用<em>do</em>(T&#x3D;t)来表达强制个体进行treatment分配(T &#x3D; t)。统计分析是基于观测数据，可以conditioning操作对数据划分约束 (sub-population)，属于被动分析；而<strong>因果推断希望主动获取数据，通过<strong><strong>intervening</strong></strong>操作干预数据分配**</strong>(whole-population)**<strong>，属于主动分析</strong>。</p>
+<p>Interventional distribution:</p>
+<p>l 用do(T&#x3D;t)来表达强制用户进行treatment分配(T &#x3D; t)</p>
+<p>l causal quantities (无法直接计算，需要识别(Identification)转化为统计量才能计算)</p>
+<p>l 可以通过experimental(随机试验)获取 (相对于statistical distribution P(X,Y,T), 可直接从data中获得)</p>
+<p>l ATE则为P(y|<em>do</em>(t))一阶矩的差<em>ATE&#x3D;E[Y|do(T&#x3D;1)] – E[Y|do(T&#x3D;0)]</em></p>
+<p>从Identification角度，希望转化causal estimand (含有do op)为statistical estimand (不含do op).</p>
+<p>Causal Model就是基于graph获取信息(Assumption)，进而从graph中分离出causation，举个(Assumption)例子如下:</p>
+<p>（2）Modularity Assumption</p>
+<p>它为formalize interventional distribution提供了方法。这个假设也很直观， intervening on Xi ，则graph里面除了 *P(Xi|pai)*改变，其他factor保持不变。</p>
+<p>根据Baysian Network Factorization和Modularity Assumption，就可以写出interventional distribution的分布，得到truncated factorization断因式分解（把干预变量因子替换0或1）。</p>
+<p><strong>表现为在<strong><strong>DAG</strong></strong>中，对<strong><strong>X</strong></strong>施加干预，指向<strong><strong>X</strong></strong>的所有箭头都可以去除</strong>。</p>
+<p>例子：目标为Identify P(y|do(t))</p>
+<p>有：</p>
+<h2 id="Identification—backdoor、frontdoor-criterion、do-calculus"><a href="#Identification—backdoor、frontdoor-criterion、do-calculus" class="headerlink" title="Identification—backdoor、frontdoor criterion、do-calculus"></a>Identification—backdoor、frontdoor criterion、do-calculus</h2><p>思路：大部分基于观测数据的研究，因果图类似上面图左，通常存在confounder X (T并非随机)，导致P(y|do(t))≠P(y|t)。当进行随机实验(intervening on T)时，切断了T的in-coming edge，消除了confounder (block non-causal path)，则可以直接进行因果计算！因此，基于观测数据，模拟这个操作基于统计的conditioning that block the non-causal path，实现Identification！<strong>这些<strong><strong>non-causal path</strong></strong>称为****backdoor path</strong>。</p>
+<h3 id="backdoor-adjustment"><a href="#backdoor-adjustment" class="headerlink" title="backdoor adjustment"></a>backdoor adjustment</h3><p><strong>Backdoor Path****：</strong>因果推断研究T on Y的因果效应，backdoor path为那些T到Y且指向T的path，这些path为non-causal association，希望block分离出causation，结合DAG中block path方法，得到第一个identification方法 backdoor adjustment.</p>
+<p>在一个有向无环图DAG中，当搜索任意变量X和Y之间的因果关系时，后门准则可以确定该模型中的哪一组变量Z应该作为条件：</p>
+<p>设S是后门路上的节点的集合，若S满足如下2准则：1）S不包含X的后代节点 ；2）对S施加条件后，没有开放的后门路，即可将所有后门路关闭。此时，称S满足后门准则。关闭所有后门路后，才能推断暴露（X）对结局（Y）的因果作用。</p>
+<p>如果W满足后门准则：</p>
+<p>  说明：</p>
+<p>调整公式：backdoor&#x2F;covariate adjustment formula, also know as G-computation formula</p>
+<h3 id="frontdoor-adjustment"><a href="#frontdoor-adjustment" class="headerlink" title="frontdoor adjustment"></a>frontdoor adjustment</h3><p>上文提过unconfoundedness是untestable的，也即存在unobserved variable为confounder，没法condition on，这个时候backdoor adjustment没法使用：例如</p>
+<p>此时，M承载了全部T —&gt; Y的causation，通过focus on M来分离causation，实现frontdoor adjustment，主要由3步组成，总结如下：</p>
+<p>前门准则的定义：</p>
+<p>设Z是前门路上的节点的集合，若Z满足如下3准则：1）S阻断了所有从暴露（X）到结局（Y）因果路；2）从暴露（X）到Z不存在后门路；3）从Z到结局（Y）的所有后门路均被暴露（X）关闭。此时，称Z满足前门准则。开放所有前门路后，才能推断X →Y的因果作用。</p>
+<p>在上图中：<strong>frontdoor criterion</strong>: variable sets M satisfy: 1. all causal path from T on Y through M; 2. no unblocked backdoor path from T to M; 3. T block all backdoor path from M to Y.</p>
+<p>三个步骤：</p>
+<p>说明：</p>
+<p>step 1，T—&gt;M，没有backdoor path，</p>
+<p>step 2，M—&gt;Y，存在backdoor path M&lt;—T&lt;—W—&gt;Y，可以被T block.</p>
+<p>step 3，依据课本上的图看：</p>
+<p>则：</p>
+<p>将前两个公式带进来，并用<em>x’</em>区分两个公式中的x，得到前门调整公式</p>
+<p>前门调整公式：Front-Door Adjustment</p>
+<p>If Z satisfies the front-door criterion relative to (X, Y) and if <em>P(x, z) &gt; 0</em>, then the causal effect of X on Y is identifiable and is given by the formula:</p>
+<h3 id="Pearl’s-do-calculus"><a href="#Pearl’s-do-calculus" class="headerlink" title="Pearl’s do-calculus"></a>Pearl’s do-calculus</h3><p>上文中backdoor、frontdoor adjustment都是很直观直接可以从causal graph中判断identifiable。（同时也存在以上两种方法不能Identity的情况。）Pearl’s do-calculus提供了一个complete 方法，只要是identifiable的都可以通过do-calculus识别：</p>
+<p>do-calculus是Identification的充要条件(可以识别的情况下)，但它不是基于Graph的，有些方法可以直接从causal graph判断Identification。</p>
+<h3 id="Conditional-Interventions-and-Covariate-Specific-Effects"><a href="#Conditional-Interventions-and-Covariate-Specific-Effects" class="headerlink" title="Conditional Interventions and Covariate-Specific Effects"></a>Conditional Interventions and Covariate-Specific Effects</h3><p>个体达到一定条件才施加干预，例如，年龄满足多少岁以上在用药、体温高于多少度才用某种药。此时的干预表达为<em>do(X&#x3D;g(Z))</em>,此时it is equivalent to identifying the expression for the z-specific effect P(Y &#x3D; y|do(X &#x3D; x), Z &#x3D; z)。</p>
+<p>这个条件干预中，调整集合adjustment set是S∪Z；仅对S求和，不包括Z。</p>
+<p>conditional interventions：</p>
+<h3 id="Instrumental-variables-工具变量"><a href="#Instrumental-variables-工具变量" class="headerlink" title="Instrumental variables 工具变量"></a>Instrumental variables 工具变量</h3><h2 id="Estimation"><a href="#Estimation" class="headerlink" title="Estimation"></a>Estimation</h2><h3 id="典型方法：（又可分为传统RCM方法和深度学习相关RCM方法）"><a href="#典型方法：（又可分为传统RCM方法和深度学习相关RCM方法）" class="headerlink" title="典型方法：（又可分为传统RCM方法和深度学习相关RCM方法）"></a>典型方法：（又可分为传统RCM方法和深度学习相关RCM方法）</h3><p>领域综述：<a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1362873055493033984">因果推断综述解析|A Survey on Causal Inference(1-12)</a></p>
+<h4 id="重加权方法（Re-weighting-methods）"><a href="#重加权方法（Re-weighting-methods）" class="headerlink" title="重加权方法（Re-weighting methods）"></a>重加权方法（Re-weighting methods）</h4><p>核心思想：通过赋予具有不同特征的样本以不同的权重，以使混淆变量在treatment和control两组间的分布是一致的。即消除混淆变量，保证随机试验。</p>
+<p>Inverse ProbabilityWeighing</p>
+<p>基本公式；</p>
+<h4 id="分层方法（Stratification-methods）"><a href="#分层方法（Stratification-methods）" class="headerlink" title="分层方法（Stratification methods）"></a>分层方法（Stratification methods）</h4><p>分层方法，也称为子分类（subclassification）或区组（blocking），是混杂因子调整的代表性方法。分层方法的核心思想是将整个组划分为同质性的亚组（区组）来调整干预组与对照组之间的偏差。理想情况下，在每个亚组中，干预组和对照组的协变量的分布是类似的，因此来自相同亚组的单元可以近似看作是从随机对照试验数据中进行采样获得的。</p>
+<h4 id="匹配方法（Matching-methods）"><a href="#匹配方法（Matching-methods）" class="headerlink" title="匹配方法（Matching methods）"></a>匹配方法（Matching methods）</h4><h4 id="基于树的方法（Tree-based-methods）"><a href="#基于树的方法（Tree-based-methods）" class="headerlink" title="基于树的方法（Tree-based methods）"></a>基于树的方法（Tree-based methods）</h4><h4 id="基于表征的方法（Representation-based-methods）"><a href="#基于表征的方法（Representation-based-methods）" class="headerlink" title="基于表征的方法（Representation based methods）"></a>基于表征的方法（Representation based methods）</h4><h4 id="多任务方法（Multi-task-methods）"><a href="#多任务方法（Multi-task-methods）" class="headerlink" title="多任务方法（Multi-task methods）"></a>多任务方法（Multi-task methods）</h4><h4 id="元学习方法（Meta-learning-methods）"><a href="#元学习方法（Meta-learning-methods）" class="headerlink" title="元学习方法（Meta-learning methods）"></a>元学习方法（Meta-learning methods）</h4><p>Estimation的思路：Causal Model和Identification，把causal estimand转化为可以估计的statistical estimand，接下来是计算的部分，如何用<strong>data<strong><strong>来计算具体的</strong></strong>casual effect<strong><strong>的数值，这个过程就是</strong></strong>Estimation</strong>。</p>
+<p>实际观测数据中经常估计conditional ATE (CATE)，</p>
+<p>有些研究可能只关注treatment或者control组的ATE，分别叫ATT和ATC（有些情况下ATE无法估计）（没有展开讲）。默认假定unconfoundedness &amp; positivity，即Identification成立，且CATE中X和covariates W都是sufficient adjustment sets. (X不需要all observed)。</p>
+<h3 id="Conditional-Outcome-Modeling-COM、S-Learner"><a href="#Conditional-Outcome-Modeling-COM、S-Learner" class="headerlink" title="Conditional Outcome Modeling (COM、S-Learner)"></a>Conditional Outcome Modeling (COM、S-Learner)</h3><h3 id="Grouped-COM-GCOM、T-learner"><a href="#Grouped-COM-GCOM、T-learner" class="headerlink" title="Grouped COM (GCOM、T-learner)"></a>Grouped COM (GCOM、T-learner)</h3><h3 id="X-learner"><a href="#X-learner" class="headerlink" title="X-learner"></a>X-learner</h3><h3 id="Propensity-score-and-IPW"><a href="#Propensity-score-and-IPW" class="headerlink" title="Propensity score and IPW"></a>Propensity score and IPW</h3><p>（1）Propensity score</p>
+<p>如果问题足够的简单，𝑋 为二值变量(如性别)，为了估计𝐴𝐶𝐸,可以直接按照𝑋 &#x3D; 1 和𝑋 &#x3D; 0 将人群分成两层，在每层中分别估计平均因果作用𝐴𝐶𝐸𝑋&#x3D;1 和𝐴𝐶𝐸𝑋&#x3D;0，再根据𝑋 &#x3D; 1 和𝑋 &#x3D; 0 的比例进行加权即可。但是，事实上，𝑋的维数可能很高且可能有连续的分量，这时候很难将人群按照𝑋 分层，即使分了层，每一层中的人数很少甚至没有人，很难进行估计。基于这个问题，Rosenbaum and Rubin(1983) 提出了倾向得分的概念，实际上这是一种降维的手段，将高维的𝑋降到低维。</p>
+<p>倾向得分定义成倾向性得分定义：condition在特征X上，被分配T&#x3D;1的概率，</p>
+<p><em>e(X)&#x3D;P(T&#x3D;1|X)</em></p>
+<p>且满足：</p>
+<p>①X⊥T|e(X);</p>
+<p>②如果有强可忽略性假设，且0&lt;e(X)&lt;1，则有T⊥(𝑌 (1), 𝑌 (0))∣𝑒(X)</p>
+<p>且0 &lt; 𝑒(X) &lt; 1。</p>
+<p>直觉上如果X是sufficient adjustment sets且e(X)估计模型正确的，那e(X)包含了全部treatment assignment的信息，那&#x3D;仅通过e(X)就可以consistent &amp; unbiased估计ATE了！</p>
+<p><strong>补充说明；</strong>明显的好处是e(X)仅是一维的，使用potential outcome model识别ATE提到的两个核心假设unconfoundedness 和 positivity是一对tradeoff，因为考虑更多变量加入sufficient adjustment sets，则有更多的机会block all backdoor path，实现unconfoundedness，但是考虑的维度越高，实现positivity难度就越大（维度灾难），样本稀疏度呈指数级增加。</p>
+<p>既然维度灾难存在导致Identification的假设存在tradeoff，那是否基于propensity score就可以完美解决这个问题了？答案是否定的！前面也提到e(X)指定正确的模型也是很关键的，这里只是把高维问题转化成了e(W)预估准确的问题，同样是棘手的问题！</p>
+<p>（2）使用Inverse Probability Weighting (IPW) 逆概率加权来估计ATE</p>
+<p>通常情况下，观测数据中存在backdoor，无法直接计算ATE，因为association≠causation，P(y|do(t))≠P(y|t)。当W（就是X，不同资料的符号表示有差异）满足backdoor criterion时，ATE可以识别</p>
+<p>IPW思想：（以下分析中的W在图中对应X）</p>
+<h3 id="回归与Heckman-Selection-Model"><a href="#回归与Heckman-Selection-Model" class="headerlink" title="回归与Heckman Selection Model"></a>回归与Heckman Selection Model</h3><p>估计𝐴𝐶𝐸的关键在于两个条件矩𝐸[𝐸(𝑌∣𝑋, T &#x3D; 1)] 和𝐸[𝐸(𝑌∣𝑋, T &#x3D; 0)]. 因此，有的计量经济学家会倾向于用回归模型来估计条件矩。Wooldrige(2002) 中给出：如果在𝑋 的每个水平下，平均因果作用都是常数，那么可以用如下的回归模型</p>
+<p>𝐸(𝑌∣<em>T</em>,𝑋) &#x3D; 𝛼 + 𝛽T + 𝑔(𝑋, 𝛾)</p>
+<p>其中𝛽 &#x3D; 𝐴𝐶𝐸。当然，也可以在回归模型中加入T和𝑋的交互项。另外一个模型是Heckman(1979) 提出的Heckman Selection Model 的推广(见Greene，2002)。模型为：</p>
+<p><em>T</em>∗ &#x3D; 𝛿 + 𝜃𝑋 + 𝑣,</p>
+<p><em>T</em> &#x3D; 𝐼(<em>T</em>∗ ≥ 0),</p>
+<p>𝑌 &#x3D; 𝛼 + 𝛽<em>T</em> + 𝛾𝑋 + 𝑢</p>
+<p>其中(𝑢, 𝑣) 服从联合正态分布。上面的回归和Heckman Selection Model都有较强的模型和参数定(Heckman Model 甚至假定了分布，这在计量经济中是比较少见的)，而倾向得分的方法更接近于“非参数”的方法，近来也受到了计量经济学的广泛接受。</p>
+<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><p>Doubly Robust Methods</p>
+<p>Matching</p>
+<p>Double Machine Learning (DML)</p>
+<p>Causal Trees &amp; Forests</p>
+<h2 id="相关文献中使用到的方法-x2F-持续总结"><a href="#相关文献中使用到的方法-x2F-持续总结" class="headerlink" title="相关文献中使用到的方法&#x2F;持续总结"></a>相关文献中使用到的方法&#x2F;持续总结</h2><h3 id="TARNet"><a href="#TARNet" class="headerlink" title="TARNet"></a>TARNet</h3><p>思想：神经网络share-bottom结构来增强数据利用率。（但其实，bottom结构参数使用了全部数据，但是head结构还是仅使用部分数据，数据利用率并不是最高的。）</p>
+<p>神经网络share-bottom结构：</p>
+<p>shared-bottm模型是神经网络多任务模型中出现较早，应用广泛的一种模型。如图，不同的任务共享输入层、shared-bottom层，每个任务有自己的task-specific tower层，每个Tower层可以是一个独立的神经网络。在一些CV领域的多任务学习中，share-bottom层可能就是某种卷积模型。</p>
+<p><strong>扩展知识：</strong>神经网络基础结构上衍生出的多任务学习模型（Modeling Task Relationships in Multi-task Learning with Multi-gate Mixture-of-Experts），再往后发展它仅作为复杂模型的一个组件。</p>
+<h3 id="变分自编码器（Variational-Auto-Encoder，VAE）"><a href="#变分自编码器（Variational-Auto-Encoder，VAE）" class="headerlink" title="变分自编码器（Variational Auto-Encoder，VAE）"></a>变分自编码器（Variational Auto-Encoder，VAE）</h3><p>讲解VAE的比较细致的原文：<a target="_blank" rel="noopener" href="https://kexue.fm/archives/5253">https://kexue.fm/archives/5253</a></p>
+<p>VAE是为每个样本构造专属的正态分布，然后采样来重构</p>
+<h3 id="分布之间的距离度量方式"><a href="#分布之间的距离度量方式" class="headerlink" title="分布之间的距离度量方式"></a>分布之间的距离度量方式</h3><p>定义距离的三条公理</p>
+<p>l 非负性、同一性：d(x,y)≥0，当且仅当x&#x3D;y时取等号;</p>
+<p>l 对称性：d(x,y)&#x3D;d(y,x);</p>
+<p>l 三角不等式：d(x,z)≤d(x,y)+d(y,z)。</p>
+<h4 id="（1）KL-divergence"><a href="#（1）KL-divergence" class="headerlink" title="（1）KL-divergence"></a>（1）KL-divergence</h4><p>kL散度的计算公式：取值范围  。</p>
+<p>设q(z|x)服从高斯分布N(μ,σ2)，则它和标准正态分布（记P(z)~N(0,1)）之间的KL散度为：（往KL公式中代入正态分布的密度函数即可推导）</p>
+<p>KL散度是根据两个概率分布的表达式来算它们的相似度，因此若只有样本本身，没有分布表达式，也就没有方法算KL散度。</p>
+<p>缺陷：没有考虑两个分布之间的几何差异，待完善。</p>
+<h4 id="（2）MD和MMD"><a href="#（2）MD和MMD" class="headerlink" title="（2）MD和MMD"></a>（2）MD和MMD</h4><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1vT4y177jt?spm_id_from=333.1007.top_right_bar_window_history.content.click">https://www.bilibili.com/video/BV1vT4y177jt?spm_id_from=333.1007.top_right_bar_window_history.content.click</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/461656480">https://zhuanlan.zhihu.com/p/461656480</a></p>
+<p><strong>均值差异****MD:</strong></p>
+<p><strong>最大均值差异<strong><strong>MMD</strong></strong>：</strong></p>
+<p>MMD（最大均值差异）是迁移学习，尤其是Domain adaptation （域适应）中使用最广泛。（目前）的一种损失函数，主要用来度量两个不同但相关的分布的距离。</p>
+<p>对于一些复杂的、高维的随机变量，无法给出它们的分布函数。这时候可以用随机变量的矩来描述一个随机变量，比如一阶中心矩是均值，二阶中心矩是方差等等。如果两个分布的均值和方差都相同的话，它们应该很相似，比如同样均值和方差的高斯分布和拉普拉斯分布。但是很明显，均值和方差并不能完全代表一个分布，这时候就需要更高阶的矩来描述一个分布。</p>
+<p>主要思想：如果两个随机变量的任意阶都相同的话，那么两个分布就是一致的。而当两个分布不相同的话，那么使得两个分布之间差距最大的那个矩应该被用来作为度量两个分布的标准。</p>
+<p>实际使用时，涉及核函数的定义</p>
+<p>一般情况下m&#x3D;n，所以只考虑矩阵K作为损失函数。通常使用高斯核函数（也称为径向基RFB）：</p>
+<h3 id="1-Lipschitz性质-利普希茨连续（Lipschitz-continuous）"><a href="#1-Lipschitz性质-利普希茨连续（Lipschitz-continuous）" class="headerlink" title="1-Lipschitz性质 利普希茨连续（Lipschitz continuous）"></a>1-Lipschitz性质 利普希茨连续（Lipschitz continuous）</h3><p>Lipschitz条件，即利普希茨连续条件（Lipschitz continuity）。</p>
+<p>定义：对于函数f(x),若其任意定义域中的x1,x2，都存在L&gt;0，使得|f(x1)-f(x2)|≤L|x1-x2|。</p>
+<p>解释：存在一个实数L，使得对于函数 f（x）上的每对点，连接它们的线的斜率的绝对值不大于这个实数L。最小的L称为该函数的Lipschitz常数。</p>
+<p>Lipschitz连续条件（Lipschitz continuity）是一个比一致连续更强的光滑性条件。直观上，Lipschitz连续函数限制了函数改变的速度。符合Lipschitz条件的函数，其斜率必小于一个称为Lipschitz常数的实数。</p>
+<p>区间Lipschitz连续：如果函数f在区间Q上以常数L利普希茨连续，那么对于x,y∈Q，有</p>
+<p>其中常数L 称为f在区间Q上的Lipschitz常数。</p>
+<h2 id="因果推断基础研究"><a href="#因果推断基础研究" class="headerlink" title="因果推断基础研究"></a>因果推断基础研究</h2><p>从观察性数据中估计因果关系，包括计算ITE、ATE、减小估计误差等。以「潜在结果框架」（potential outcome framework）为主，有多个benchmark数据集。最全综述文章A[ Survey on Causal Inference方法、数据、代码网址等很全的综述](A Survey on Causal Inference方法、数据、代码网址等很全的综述.pdf)。</p>
+<h3 id="Individual-Treatment-Estimation"><a href="#Individual-Treatment-Estimation" class="headerlink" title="Individual Treatment Estimation"></a>Individual Treatment Estimation</h3><ol>
+<li>ICML 2017 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/426793887">Estimating individual      treatment effect: generalization bounds and algorithms</a>(本文第一次提出了ITE的概念，并使用DA的一套理论对其进行bound，依次设计了一套行而有效的算法。)</li>
+<li>NeurIPS 2019 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/426793887">Adapting Neural Networks for      the Estimation of Treatment Effects</a>(这篇文章的核心思想是这样的：没必要使用所有的协方差变量X进行adjustment。)</li>
+<li>PNAS 2019 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/426793887">Meta-learners for Estimating      Heterogeneous Treatment Effects using Machine Learning</a>(本文提出了一种新的框架X-learner，当各个treatment组的数据非常不均衡的时候，这种框架非常有效。)</li>
+<li>AAAI 2020 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/426793887">Learning Counterfactual      Representations for Estimating Individual Dose-Response Curves</a>(本文提出了新的metric，新的数据集，和训练策略，允许对任意数量的treatment的outcome进行估计。)</li>
+<li>ICLR 2021 Oral: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/426793887">VCNet and Functional      Targeted Regularization For Learning Causal Effects of Continuous      Treatments</a>(本文基于varying coefficient model，让每个treatment对应的branch成为treatment的函数，而不需要单独设计branch，依次达到真正的连续性。)</li>
+<li>Arxiv 2021 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/426793887">Neural Counterfactual      Representation Learning for Combinations of Treatments</a>(本文考虑更复杂的情况：多种treatment共同作用。)</li>
+<li>NeurIPS 2021 Spotlight <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2106.03765">On Inductive Biases for      Heterogeneous Treatment Effect Estimation</a>(本文提出了新框架FlexTENet，直接对条件因果值τ进行估计，而不是对μ1，μ2分别估计)</li>
+<li>NeurIPS 2021 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2101.10943">Nonparametric Estimation of      Heterogeneous Treatment Effects: From Theory to Learning Algorithms</a>(本文分析了近来进行 individual treatment     effect的各种算法范式，)</li>
+<li>Arxiv 2021 <a target="_blank" rel="noopener" href="https://github.com/yfzhang114/Generalization-Causality/blob/main/%E5%AF%B9treatment%EF%BC%8Ccontrol%E4%B8%A4%E4%B8%AAgroup%E5%88%86%E5%88%ABencode%EF%BC%8C%E7%84%B6%E5%90%8E%E5%AF%B9%E6%8A%97%E5%AD%A6%E4%B9%A0%E5%87%8F%E5%B0%91%E5%9F%9F%E5%B7%AE%E8%B7%9D%EF%BC%8C%E4%B8%BA%E4%BA%86%E9%98%B2%E6%AD%A2%E5%88%86%E7%B1%BB%E4%BF%A1%E6%81%AF%E8%A2%AB%E6%8A%B9%E5%8E%BB%EF%BC%8C%E5%8A%A0%E4%B8%8Acycle-consistance%E7%9A%84%E7%BA%A6%E6%9D%9F%EF%BC%8C%E9%87%8D%E6%9E%84%E7%89%B9%E5%BE%81%E3%80%82">Cycle-Balanced      Representation Learning For Counterfactual Inference</a></li>
+</ol>
+<h2 id="派生研究领域"><a href="#派生研究领域" class="headerlink" title="派生研究领域"></a>派生研究领域</h2><p>从ICML的视角：ICML2021因果相关专题的论文，涉及的因果细分方向有：因果发现、因果结构学习、贝叶斯学习、因果强化学习、因果推断、因果深度学习、贝叶斯深度学习等。相比于今年NIPS2021，ICML中因果相关的论文，涉及贝叶斯优化比较多<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/433260334%E3%80%82AAAI2022%E5%9B%A0%E6%9E%9C%E7%9B%B8%E5%85%B3%E4%B8%93%E9%A2%98%E7%9A%84%E8%AE%BA%E6%96%87%EF%BC%8C%E6%B6%89%E5%8F%8A%E7%9A%84%E5%9B%A0%E6%9E%9C%E7%BB%86%E5%88%86%E6%96%B9%E5%90%91%E6%9C%89%EF%BC%9A%E5%9B%A0%E6%9E%9C%E5%8F%91%E7%8E%B0%E3%80%81%E5%9B%A0%E6%9E%9C%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E3%80%81%E5%9B%A0%E6%9E%9C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%81%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD%E3%80%81%E5%9B%A0%E6%9E%9C%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AD%89%E3%80%82%E7%9B%B8%E6%AF%94%E4%BA%8ENIPS%EF%BC%8CICML%EF%BC%8CAAAI%E6%B6%89%E5%8F%8A%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD%E8%90%BD%E5%9C%B0%E7%9A%84%E5%9C%BA%E6%99%AF%E6%AF%94%E8%BE%83%E5%A4%9Ahttps://zhuanlan.zhihu.com/p/455091033%E3%80%82">https://zhuanlan.zhihu.com/p/433260334。AAAI2022因果相关专题的论文，涉及的因果细分方向有：因果发现、因果结构学习、因果强化学习、因果推断、因果深度学习等。相比于NIPS，ICML，AAAI涉及因果推断落地的场景比较多https://zhuanlan.zhihu.com/p/455091033。</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yfzhang114/Generalization-Causality">涉及了OOD，causality，robustness，optimization等最新论文集</a></p>
+<h3 id="因果发现causal-discovery"><a href="#因果发现causal-discovery" class="headerlink" title="因果发现causal discovery"></a>因果发现causal discovery</h3><p>发现一组变量之间的因果结构是因果学习中的一个基本问题，旨在理解数据生成的因果机制。在因果发现中，学习到的因果图的形式为有向无环图(DAG)，存在潜在混淆变量和选择偏差的情况下，从观测数据中学习系统的因果MAG(Maximal Ancestral Graph)。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/439885737">经典论文</a></p>
+<p>因果发现领域前沿：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/439887136">NeurIPS 2021接收论文中与因果发现相关的文章</a>，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/481732008">ICLR2022中最新Causal Discovery相关论文</a></p>
+<p>这一类算法learn a set of causal graphs which satisfy the conditional independence embedded in the data。也就是通过找到上面三种基本结构来构建因果图，寻找方式就是通过条件独立的检验，一般的方式都是从一个无向的全链接图出发开始寻找，通过一系列规则最终生成一个图。</p>
+<h3 id="因果表征学习（Causal-Representation-Learning）"><a href="#因果表征学习（Causal-Representation-Learning）" class="headerlink" title="因果表征学习（Causal Representation Learning）"></a>因果表征学习（Causal Representation Learning）</h3><p>从低阶的观测数据（low-level observations）中发现高阶的因果变量（high-level causal variables）。</p>
+<p>文献：2021<a href="%E5%9B%A0%E6%9E%9C%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0/toward_causal_representation_learning.pdf">Towards Causal Representation Learning</a>，Proceedings of IEEE，对该文献的解读<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40943760/article/details/123373859">链接</a>。简介：机器学习和因果图模型这两个领域是各自单独产生、发展壮大的。然而，现在两个领域有交汇之处，越来越多的人想知道对于如何借鉴对方的领域来使自己的领域受益。在这篇论文中，回顾了因果推断的一些重要概念，将它们与机器学习中关键的开放问题关联起来，包括迁移和泛化，继而分析因果对于现在的机器学习研究能起到怎样的帮助作用。反之亦然：因果领域的工作通常事先假定因果变量是已知的。而对于人工智能和因果，一个重要的问题就是，因果表征的学习，也就是从低阶的观测数据中发现高阶的因果变量。最后，描绘了因果对于机器学习的一些启示，并且提出了在两个领域交汇处的一些重要的研究方向。对于因果表征学习、因果和机器学习的关系与未来发展做出了展望。</p>
+<h3 id="反事实推断问题-Counterfactual-Prediction"><a href="#反事实推断问题-Counterfactual-Prediction" class="headerlink" title="反事实推断问题(Counterfactual Prediction)"></a>反事实推断问题(Counterfactual Prediction)</h3><p>反事实推断问题在Pearl的因果之梯（上文中写的因果推断的三个层次）中处于最顶层，是因果推断尝试解决的顶层问题，也是赋予机器“联想”能力的重要途径。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/453858650">近期ICML与NeurIPS文献</a> </p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/455802480">使用工具变量进行因果推断(Instrumental Variables, IV)</a></p>
+<p>在因果学习中的反事实推断下，真实情况中的因果推断十分困难，因为常常存在着内生性的问题，即可能存在着隐藏的混淆因子在同时影响“因”和“果”。而工具变量一类的方法则针对于内生性的问题，通过先验知识引入工具变量来进行准确的因果效应估计。</p>
+<h3 id="分布外泛化问题Out-of-Distribution-Generalization-OOD"><a href="#分布外泛化问题Out-of-Distribution-Generalization-OOD" class="headerlink" title="分布外泛化问题Out-of-Distribution Generalization,OOD"></a>分布外泛化问题Out-of-Distribution Generalization,OOD</h3><p>OOD问题研究领域实时更新的paper list：<a target="_blank" rel="noopener" href="https://out-of-distribution-generalization.com/">https://out-of-distribution-generalization.com/</a></p>
+<p><strong>主要问题：</strong>机器学习模型在存在分布偏移下的脆弱性。</p>
+<p><strong>问题原因：</strong>源自于违反了训练和测试数据是独立同分布的基本假设(又名i.i.d.假设)，而大多数现有的学习模型都是基于这个假设设计开发的。</p>
+<p><strong>与因果学习的关系：<strong><strong>causality&lt;****—****&gt;invariance</strong></strong>。</strong>机器学习虽然可以通过将训练数据上的误差最小化来学习复杂的预测模型，但实际中数据往往会受到样本选择性偏差(selection bias)、混杂因素(unobserved confounder)和其他因素的影响。因而机器也会受到这样的数据偏差的影响，对于人工智能的实现带来极大的制约。更具体地说，最小化训练误差会导致机器不计后果地吸收训练数据中发现的所有相关性。而需要知道数据中的哪些相关性是有用的，这也被称为相关关系与因果关系的“选择困境”，因为源自于数据偏差的虚假相关性与预测目标之间不存在因果关系，使用这样的虚假相关来进行预测是有害的。</p>
+<p>清华大学计算机系崔鹏团队的首篇OOD泛化问题长综述，Towards Out-Of-Distribution Generalization: A Survey,论文地址：[本地](分布外泛化问题&#x2F;Towards Out-Of-Distribution Generalization A survey.pdf)。</p>
+<h3 id="深度稳定学习Deep-Stable-Learning-属于OOD问题"><a href="#深度稳定学习Deep-Stable-Learning-属于OOD问题" class="headerlink" title="深度稳定学习Deep Stable Learning 属于OOD问题"></a>深度稳定学习Deep Stable Learning 属于OOD问题</h3><p><a target="_blank" rel="noopener" href="https://hub.baai.ac.cn/live/181">因果启发的稳定学习年度研究报告视频</a></p>
+<p>三者的关系</p>
+<p>对于和训练数据集差异较大的环境，如何确保该环境下保证算法的效果，这是稳定学习想要解决的问题，即当训练数据和测试数据所处的概率分布不同时，如何提升深度学习的泛化能力。</p>
+<p>代表文献：清华大学崔鹏“Deep Stable Learning for Out-Of-Distribution Generalization”，提出基于特征权重重置的StableNet。</p>
+<h3 id="因果推断-推荐系统paper-list"><a href="#因果推断-推荐系统paper-list" class="headerlink" title="因果推断+推荐系统paper list"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/442804842">因果推断+推荐系统paper list</a></h3><h3 id="离线策略评估-Off-Policy-Evaluation，OPE"><a href="#离线策略评估-Off-Policy-Evaluation，OPE" class="headerlink" title="离线策略评估(Off-Policy Evaluation，OPE)"></a>离线策略评估(Off-Policy Evaluation，OPE)</h3><p>因果学习中的离线策略评估(Policy Evaluation)问题。离线策略评估问题主要针对于某项策略给出其预期的作用，利用不同策略生成的数据估计不同策略的性能，其中涉及到了反事实的问题，也是因果学习中的一类重要问题，对于推荐策略、定价策略等实际应用有着很大的作用。文献list：<a target="_blank" rel="noopener" href="https://blog.csdn.net/BAAIBeijing/article/details/121987601">https://blog.csdn.net/BAAIBeijing/article/details/121987601</a></p>
+<p>边表示因果关系，加上权重是什么含义</p>
+<p>多个变量对Y的因果概率是1（一定导致），少量变量能否无限接近1</p>
 
       
     </div>
