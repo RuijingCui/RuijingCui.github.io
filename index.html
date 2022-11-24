@@ -836,7 +836,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/11/17/hello-world/" class="post-title-link" itemprop="url">未命名</a>
+            <a href="/2022/11/17/hello-world/" class="post-title-link" itemprop="url">Causal Inference</a>
         </h2>
 
         <div class="post-meta">
@@ -853,7 +853,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-22 23:27:12" itemprop="dateModified" datetime="2022-11-22T23:27:12+08:00">2022-11-22</time>
+                <time title="修改时间：2022-11-24 21:05:49" itemprop="dateModified" datetime="2022-11-24T21:05:49+08:00">2022-11-24</time>
               </span>
 
           
@@ -867,8 +867,43 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
-<h2 id="title-美丽CC宝"><a href="#title-美丽CC宝" class="headerlink" title="title:美丽CC宝"></a>title:美丽CC宝</h2><p><img src="E:\blog\source_posts\CC.jpg" alt="图片"></p>
+          <p>资料来源：相关文献</p>
+<p><strong>基本问题</strong></p>
+<p>（1）<strong>低质量&#x2F;半监督数据</strong>。 缺失或噪声数据在许多实际应用领域中普遍存在，这意味着数据集中的一个或多个特征的值不正确或从记录的观测中缺失。 现有的基于因果关系的特征选择方法都假设数据集中涉及的所有特征都不存在缺失值或噪声值。 在低质量的大数据中，解决基于因果关系的特征选择方法是一个具有挑战性的问题。</p>
+<p>（2）<strong>流特征与流数据的特征选择</strong>。现有的基于因果关系的特征选择方法假设数据集中的所有数据实例都是预先给定的。 事实上，许多现实世界的数据集都是以流的形式提供的。 因此，有必要开发基于因果关系的在线特征选择算法来处理流数据。A.流数据：数据样本以单个或块的形式到达，特征及其数量不变。B.流特征：样本数量不变，特征按顺序到达。C：流数据+流特征（没有相关研究）</p>
+<p>（3）<strong>类不平衡数据</strong>。 现有的大多数基于因果关系的方法不能处理具有不平衡类的数据集，然而，在许多实际应用中存在这种不平衡类。 开发新的特征选择方法来解决这一问题是非常重要的。</p>
+<p>（4）<strong>分布变化</strong>。实际情况下数据分布很可能会发生变化，不满足忠诚性假设时，目标变量可能存在多个MB，多个MB在理论上拥有等效的预测信息。<strong>多重MB</strong>没法用作特征选择技术，因而算法和研究都较少。那选择多重MB的意义？选择容易收集数据的那个MB，</p>
+<p>（5）<strong>多源数据特征选择</strong>。数据来源不同，最优且稳定不变的特征集被证明是目标变量的父节点的集合。</p>
+<p>（6）<strong>非IID数据。</strong> 现有的基于因果关系的特征选择方法几乎都局限于IID数据。 对于非IID数据，这些方法仍然面临着很大的挑战。 非IID场景的一种类型是训练数据和测试数据具有不同的分布（即，分布移位数据）。 对于这种类型的数据，可以合理地假定系统的因果机制（即直接原因）在不同的条件或环境下是不变的，从而直接原因可以作为获得稳定预测的不变特征集[54,107]。 基于因果关系的特征选择具有处理分布偏移数据的潜力，但如果没有干预实验，它们无法从数据中识别类别变量的原因。 非IID情况的另一种类型是数据观测高度相互依赖（即相关数据）。 研究表明，忽略数据观测之间的相关性可能会显著降低BN结构学习的性能[10]，而现有的基于因果关系的特征选择方法也可能存在同样的问题。到目前为止，基于因果关系的特征选择算法在解决相关数据问题方面的研究还很少。</p>
+<p>（7）<strong>神经网络的因果关系</strong>。 近年来，利用因果关系进行神经网络学习成为一个热点[8,34,78,91]，利用因果知识解决神经网络学习中的问题是一个正确的方向。 然而，开发基于因果关系的特征选择算法来识别神经网络表示中的特征是具有挑战性的。</p>
+<p><strong>MB</strong> <strong>发现算法当前主要的应用场景</strong>：鲁棒的特征选择、特征与标签之间因果关系的解释及特征因果关系图的构建.</p>
+<p><strong>算法代码</strong>：</p>
+<p>Python版本：<a target="_blank" rel="noopener" href="https://github.com/kuiy/pyCausalFS">https://github.com/kuiy/pyCausalFS</a></p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><strong>数据集</strong></p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p>一些想法：</p>
+<p><strong>基于因果的特征选择方法</strong>：</p>
+<p><strong>综述视角****1</strong>：基于约束和分数的方法 Causality-based Feature Selection: Methods and Evaluations</p>
+<p><strong>综述视角****2</strong>：直接法&#x2F;分治法&#x2F;多重MB 基于马尔科夫边界发现的因果特征选择算法综述</p>
+<p><strong>综述视角****3</strong>：利用数据学习因果：</p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.png" alt="img"></p>
+<p><strong>对应文献：</strong></p>
+<p>1.因果特征和非因果特征选择之间的关系研究：</p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image008.png" alt="img"></p>
+<p> 2.基于马尔科夫边界发现的因果特征选择算法综述：</p>
+<p>多种算法代码数据集收集：<a target="_blank" rel="noopener" href="http://home.ustc.edu.cn/~xingyuwu/MB.html">http://home.ustc.edu.cn/~xingyuwu/MB.html</a></p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg" alt="img"></p>
+<p> <img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image012.jpg" alt="img"></p>
+<p> <img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image014.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image016.jpg" alt="img"></p>
+<p> 3.Causality-based Feature Selection: Methods and Evaluations：</p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image018.png" alt="img"></p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image020.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image021.png" alt="img"></p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image022.png" alt="img"></p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image024.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/CUIRUI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image026.jpg" alt="img"></p>
 
       
     </div>
